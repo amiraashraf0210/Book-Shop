@@ -39,20 +39,21 @@
         <div class="card mx-2 mb-4" style="width: 16rem;">
             @if (string.IsNullOrEmpty(book.Image))
             {
-                <img  style="width:100%;height:300px" class="card-img-top" src="/images/NoImage.png" alt="...">
+                //to-do fix the style hieght
+                <img style="width:100%;height:300px !important" class="card-img-top" src="/images/NoImage.png" alt="...">
             }
             else
             {
-                <img class="card-img-top" src="/images/@book.Image" alt="...">
+                <img style="width:100%;height:300px !important" class="card-img-top" src="/images/@book.Image" alt="...">
             }
             
             <div class="card-body">
                 <h5 class="card-title">@book.BookName</h5>
                 <p class="card-text">
-                Genre : @book.GenreName
-                Author :@book.AuthorName
-                Price :@book.Price
+                Genre : @book.GenreName              
                 </p>
+                <p>Author :@book.AuthorName</p>
+                <p>Price :@book.Price</p>
                 <a href="#" class="btn btn-primary">Add to cart</a>
             </div>
         </div>
