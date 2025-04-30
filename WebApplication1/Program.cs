@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using WebApplication1;
 using WebApplication1.Data;
-
+//ROAAAAAAAAAAAAAAAAAAAAAA
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,7 +17,8 @@ builder.Services
     .AddDefaultUI()
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddTransient<IHomeRepository, HomeRepository>();
+builder.Services.AddApplicationInsightsTelemetry();
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
