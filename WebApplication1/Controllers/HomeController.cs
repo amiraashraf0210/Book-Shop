@@ -26,7 +26,10 @@ namespace WebApplication1.Controllers
             {
                 Books =books,
                 Genres = genres,
+                sTerm=sterm,
+                GenreId=genreId
             };
+
             return View(bookModel);
         }
 
