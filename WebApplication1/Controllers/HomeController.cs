@@ -25,8 +25,13 @@ namespace WebApplication1.Controllers
             BookDisplayModel bookModel = new BookDisplayModel
             {
                 Books =books,
-                Genres = genres
+
+                Genres = genres,
+                sTerm=sterm,
+                GenreId=genreId
+
             };
+
             return View(bookModel);
         }
 

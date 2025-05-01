@@ -18,7 +18,10 @@ builder.Services
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IHomeRepository, HomeRepository>();
+builder.Services.AddTransient<ICartRepository, CartRepository>();
+
 builder.Services.AddApplicationInsightsTelemetry();
+
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
