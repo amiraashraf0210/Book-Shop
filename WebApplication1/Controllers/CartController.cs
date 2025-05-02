@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApplication1.Controllers
 {
     [Authorize]
-    public class CartController1 : Controller
+    public class CartController : Controller
     {
         private readonly ICartRepository _cartRepo;
-        public CartController1(ICartRepository cartRepo)
+        public CartController(ICartRepository cartRepo)
         {
             _cartRepo = cartRepo;
         }
