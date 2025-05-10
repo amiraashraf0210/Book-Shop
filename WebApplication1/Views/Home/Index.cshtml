@@ -5,7 +5,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div my-2>
+<div class="my-2">
     <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
         <div class="col-12">
             <label class="visually-hidden" for="genreId">Genres</label>
@@ -57,11 +57,18 @@
 
                     <b>Genre : </b>@book.GenreName
                     <b>Author : </b>@book.AuthorName <br/>
-                    <b>Price : </b>@book.Price
+                    <b>Price : </b>@book.Price 
+                     @* <br/><b>@book.Quantity </b> <br /> *@
                 </p>
-                
+                @if (book.Quantity > 0)
+                {
+                    <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
+                }
+                else
+                {
+                    <span style="border: 1px solid;padding: 5px 8px;color: red;border-radius: 5px;">Out of stock</span>
+                }
 
-                <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
             </div>
         </div>
     }
