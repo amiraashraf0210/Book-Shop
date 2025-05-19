@@ -1,83 +1,96 @@
 ﻿<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EBookStore - Online book store</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/site.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/Home/Index">EBookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index">
+                <i class="bi bi-book"></i> EBookStore
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="/Home/Index">
-                            Home
-                            <span class="visually-hidden">(current)</span>
+                            <i class="bi bi-house"></i> Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Home/Privacy">Privacy</a>
+                        <a class="nav-link" href="/Home/Privacy">
+                            <i class="bi bi-shield-check"></i> Privacy
+                        </a>
                     </li>
                     @if (User.IsInRole(Roles.Admin.ToString()))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/AdminOperations/Dashboard">Dashboard</a>
+                            <a class="nav-link" href="/AdminOperations/Dashboard">
+                                <i class="bi bi-speedometer2"></i> Dashboard
+                            </a>
                         </li>
-                       @*  <li class="nav-item">
-                          <a class="nav-link" 
-                          href="/AdminOperations/AllOrders">Orders</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Stock/Index">Stock</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Genre/Index">Genre</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Book/Index">Books</a>
-                        </li> *@
                     }
-                    
-                    @*<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>*@
                 </ul>
                 <partial name="_LoginPartial" />
-
             </div>
         </div>
     </nav>
-    <div class="container">
+
+    <div class="container py-4 content-wrapper">
         <div class="my-2">
             <partial name="_Notifications" />
         </div>
         @RenderBody()
     </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About EBookStore</h5>
+                    <p>Your one-stop destination for all your reading needs. Discover thousands of books across various
+                        genres.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/Home/Index" class="text-white">Home</a></li>
+                        <li><a href="/Home/Privacy" class="text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-envelope"></i> support@ebookstore.com</li>
+                        <li><i class="bi bi-telephone"></i> +1 234 567 890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center">
+                <p class="mb-0">&copy; @DateTime.Now.Year - EBookStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         loadCartCount();
         async function loadCartCount() {
             try {
-            var response = await fetch(`/Cart/GetTotalItemInCart`);
-              console.log(response)    
+                var response = await fetch(`/Cart/GetTotalItemInCart`);
                 if (response.status == 200) {
                     var result = await response.json();
                     var cartCountEl = document.getElementById("cartCount");
@@ -88,9 +101,8 @@
                 console.log(err);
             }
         }
-</script>
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
 </html>
-
-
-@await RenderSectionAsync("Scripts", required: false)
-
