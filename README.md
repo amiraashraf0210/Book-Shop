@@ -32,3 +32,14 @@ git clone https://github.com/amiraashraf0210/Book-Shop.git
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 
+
+## Live Demo
+
+You can check out the deployed project here: [BookShop .NET](http://bookshop-dotnet.runasp.net/)
+
+### Admin Access
+
+To explore the admin panel, use the following credentials:
+
+- **Email:** admin@gmail.com  
+- **Password:** Admin@123
